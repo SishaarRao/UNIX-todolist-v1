@@ -1,5 +1,7 @@
 #!/bin/bash
-. ticktick.sh
+
+# Add Dependencies
+. .dependencies/ticktick.sh
 
 #######################################
 #    Created by Sishaar Rao
@@ -7,44 +9,29 @@
 #    todolist program
 #######################################
 
-KEYWORDS=("init" "list" "add" "remove" "complete")
-
-echo "Parameter Count:" $#
-echo "Keywords:" ${KEYWORDS[*]}
-
-
-``
-  people = {
-    "Writers": [
-      "Rod Serling",
-      "Charles Beaumont",
-      "Richard Matheson"
-    ],
-    "Cast": {
-      "Rod Serling": { "Episodes": 156 },
-      "Martin Landau": { "Episodes": 2 },
-      "William Shatner": { "Episodes": 2 }
-    }
-  }
-``
-
-function printDirectors() {
-  echo "  The ``people.Directors.length()`` Directors are:"
-
-  for director in ``people.Directors.items()``; do
-    printf "    - %s\n" ${!director}
-  done
+function parse(){
+    echo "Hello, World!"
 }
 
-`` people.Directors = [ "John Brahm", "Douglas Heyes" ] ``
-printDirectors
+containsElement () {
+    local e
+    for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+    return 1
+}
 
-newDirector="Lamont Johnson"
-`` people.Directors.push($newDirector) ``
-printDirectors
 
-echo "Shifted: "``people.Directors.shift()``
-printDirectors
 
-echo "Popped: "``people.Directors.pop()``
-printDirectors
+KEYWORDS=("init" "list" "add" "remove" "complete")
+echo "Parameter:" $*
+echo "Keywords:" ${KEYWORDS[*]}
+
+#echo "$* ${KEYWORDS[*]}" | tr ' ' '\n' | sort -u | tr '\n' ' '
+
+for param in $*
+do
+    containsElement "init" "${KEYWORDS[*]}"
+    echo $?
+done
+
+
+
