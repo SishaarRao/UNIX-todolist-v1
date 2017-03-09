@@ -1,0 +1,13 @@
+Planning
+
+Commands to Implement
+	 init [listName]:
+
+	 list [listName]
+
+	 add [task ...]
+
+	 remove [task ID]
+
+	 complete [task ID]
+	 
