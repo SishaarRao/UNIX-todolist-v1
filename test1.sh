@@ -20,7 +20,7 @@ __tokenize (){
     fi
     
     command=""
-    
+    # Parse through params, get command
     for param in $*; do
 	if [[ "$command" != "" ]] && [[ " ${KEYWORDS[*]} " == *" $param "* ]]; then
 	    echo "Error Code 3: Too many keywords in input"
@@ -30,6 +30,8 @@ __tokenize (){
 	    command="$param"
 	fi
     done
+
+    ${command}
 }
 
 init (){
