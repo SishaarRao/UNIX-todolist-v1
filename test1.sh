@@ -11,25 +11,17 @@
 KEYWORDS=("init" "list" "add" "remove" "complete")
 
 __tokenize (){
-    count=0
+    count=""
     for param in $*; do
-	# Check if param is keyword
-	if [[ " ${KEYWORDS[*]} " == *" $param "* ]]
-	then
-	    ((count++))
-	fi
-	# Throw error if too many keywords in param
-	if [[ "$count" -gt "1" ]]
-	then
+	if [[ "$count" != "" ]] && [[ " ${KEYWORDS[*]} " == *" $param "* ]]; then
 	    echo "Error Code 3: Too many keywords in input"
 	    exit 3
 	fi
+	if [[ "$count" == "" ]] && [[ " ${KEYWORDS[*]} " == *" $param "* ]]; then
+	    count="$param"
+	fi
     done
-    
-
 }
-
-
 
 echo "Parameter:" $*
 echo "Keywords:" ${KEYWORDS[*]}
