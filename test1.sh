@@ -15,14 +15,20 @@ echo "Parameter:" $*
 echo "Keywords:" ${KEYWORDS[*]}
 
 # Check if parameters hit a keyword
+count=0
 for param in $*; do
-    if [[ " ${KEYWORDS[*]} " == *"$param"* ]];
+    # Check if param is keyword
+    if [[ " ${KEYWORDS[*]} " == *"$param"* ]]
     then
-	echo "Param Matched:" $param
-    else
-	echo "Param No Match:" $param
+	((count++))
     fi
+    # Throw error if too many keywords in param
+    if [[ "$count" -gt "1" ]]
+    then
+	echo "Error Code 3: Too many keywords in input"
+	exit 3
+    fi
+    
 done
 
-
-
+echo $count
