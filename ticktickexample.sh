@@ -1,3 +1,5 @@
+#!/bin/bash
+. .dependencies/ticktick.sh
 
 ``
   people = {
