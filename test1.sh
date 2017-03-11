@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add Dependencies
-. .dependencies/ticktick.sh
+. ./.dependencies/ticktick.sh
 
 #######################################
 #    Created by Sishaar Rao
@@ -58,14 +58,15 @@ complete (){
     echo "This is the function for marking a task complete on a list"
     exit 0
 }
+# Tokenize input, call respective function
+#__tokenize $*
 
 
-
-#echo "Parameter:" $*
-#echo "Keywords:" ${KEYWORDS[*]}
-
-# Check if parameters hit a keyword
-
-__tokenize $*
-
-echo $command
+# JSON manipulation
+DATA=`cat ./data1.json`
+echo $DATA
+tickParse "$DATA"
+`` People.Sishaar.push("Hobby": "Dance") ``
+for person in ``People.items()``; do
+    echo "${!person}"
+  done
