@@ -87,8 +87,4 @@ complete (){
 DATA=`cat ./data2.json`
 echo $DATA
 tickParse "$DATA"
-for item in ``List.items()``; do
-    printf "    - %s\n" ${!item}
-done
-myItems= tickVars
-echo $myItems
+echo `` List.items() ``
