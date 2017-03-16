@@ -64,22 +64,31 @@ complete (){
 
 # JSON manipulation
 # Print the original data
-DATA=`cat ./data1.json`
+#DATA=`cat ./data1.json`
+#echo $DATA
+#tickParse "$DATA"
+#for person in ``People.Sishaar.items()``; do
+#    printf "    - %s\n" ${!person}
+#done
+#
+## Push a new value, reprint the data
+#newItem="Dance"
+#newItem2="Movies"
+#`` People.Sishaar.Hobby = [] ``
+#`` People.Sishaar.Hobby.push($newItem) ``
+#`` People.Sishaar.Hobby.push($newItem2) ``
+#
+#for person in ``People.Sishaar.items()``; do
+#    printf "    - %s\n" ${!person}
+#done
+#myItems= tickVars
+#echo $myItems
+
+DATA=`cat ./data2.json`
 echo $DATA
 tickParse "$DATA"
-for person in ``People.Sishaar.items()``; do
-    printf "    - %s\n" ${!person}
-done
-
-# Push a new value, reprint the data
-newItem="Dance"
-newItem2="Movies"
-`` People.Sishaar.Hobby = [] ``
-`` People.Sishaar.Hobby.push($newItem) ``
-`` People.Sishaar.Hobby.push($newItem2) ``
-
-for person in ``People.Sishaar.items()``; do
-    printf "    - %s\n" ${!person}
+for item in ``List.items()``; do
+    printf "    - %s\n" ${!item}
 done
 myItems= tickVars
 echo $myItems
