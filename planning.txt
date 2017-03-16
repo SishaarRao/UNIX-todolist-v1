@@ -11,5 +11,14 @@ Commands to Implement
 	 
 	 complete [task ID]
 
-
-	 
+Structure of JSON storage file
+List1[
+	Task:{
+		Description: ""
+		Completed: Boolean
+	},
+	Task:{
+		Description: ""
+		Completed: Boolean
+	}
+]
