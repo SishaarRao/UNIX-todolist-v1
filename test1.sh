@@ -87,4 +87,13 @@ complete (){
 DATA=`cat ./data2.json`
 echo $DATA
 tickParse "$DATA"
-echo `` List.items() ``
+len=``List.length()``
+count=0
+
+arrayA=(0 1 2 3)
+for i in $(seq 0 $(($len-1)));
+do
+    echo $i
+    echo ``List[0].Description``
+done
+
