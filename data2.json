@@ -1,10 +1,10 @@
 {
     "List":[
-	"Task":{
+	{
 	    "Description": "This is the first task",
 	    "Completed": "false"
 	},
-	"Task":{
+	{
 	    "Description": "This is the second task",
 	    "Completed": "true"
 	}
