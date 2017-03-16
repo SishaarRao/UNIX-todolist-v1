@@ -63,10 +63,21 @@ complete (){
 
 
 # JSON manipulation
+# Print the original data
 DATA=`cat ./data1.json`
 echo $DATA
 tickParse "$DATA"
-`` People.Sishaar.push("Hobby": "Dance") ``
-for person in ``People.items()``; do
-    echo "${!person}"
-  done
+for person in ``People.Sishaar.items()``; do
+    printf "    - %s\n" ${!person}
+done
+
+# Push a new value, reprint the data
+newItem="Dance"
+`` People.Sishaar.Hobby = [] ``
+`` People.Sishaar.Hobby.push($newItem) ``
+
+for person in ``People.Sishaar.items()``; do
+    printf "    - %s\n" ${!person}
+done
+
+echo `` People.items() ``
