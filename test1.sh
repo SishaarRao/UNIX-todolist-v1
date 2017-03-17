@@ -94,6 +94,7 @@ arrayA=(0 1 2 3)
 for i in $(seq 0 $(($len-1)));
 do
     echo $i
-    echo ``List[0].Description``
+    input="List[$i].Description"
+    echo `` "$input" ``
 done
 
