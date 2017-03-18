@@ -68,16 +68,11 @@ complete (){
 DATA=`cat ./data2.json`
 echo $DATA
 tickParse "$DATA"
-len=``List.length()``
-echo $len
-for i in $(seq 0 $(($len-1)));
-do
+for i in $(seq 0 $((``List.length()``-1))); do
     index=`printf "%012d" "$i"` 
-    var="__tick_data_List_${index}_Description"
-    var2="__tick_data_List_${index}_Completed"    
-    eval result=\$$var
-    eval result2=\$$var2
-    echo $result $result2
+    eval description=\$"__tick_data_List_${index}_Description"
+    eval completed=\$"__tick_data_List_${index}_Completed"
+    echo $description $completed
 done
 
 # Write Data to a JSON file
