@@ -3,6 +3,9 @@
 # Add Dependencies
 . ./.dependencies/ticktick.sh
 
+# Add Saves
+
+
 #######################################
 #    Created by Sishaar Rao
 #    This is a step by step of the 
@@ -61,29 +64,7 @@ complete (){
 # Tokenize input, call respective function
 #__tokenize $*
 
-
-# JSON manipulation
-# Print the original data
-#DATA=`cat ./data1.json`
-#echo $DATA
-#tickParse "$DATA"
-#for person in ``People.Sishaar.items()``; do
-#    printf "    - %s\n" ${!person}
-#done
-#
-## Push a new value, reprint the data
-#newItem="Dance"
-#newItem2="Movies"
-#`` People.Sishaar.Hobby = [] ``
-#`` People.Sishaar.Hobby.push($newItem) ``
-#`` People.Sishaar.Hobby.push($newItem2) ``
-#
-#for person in ``People.Sishaar.items()``; do
-#    printf "    - %s\n" ${!person}
-#done
-#myItems= tickVars
-#echo $myItems
-
+# Read Data from a JSON File
 DATA=`cat ./data2.json`
 echo $DATA
 tickParse "$DATA"
@@ -98,3 +79,13 @@ do
     eval result2=\$$var2
     echo $result $result2
 done
+
+# Write Data to a JSON file
+file="./.saves/data1.json"
+# Check if file exists and is writable, if not create the file
+( [ -e "$file" ] || touch "$file" ) && [ ! -w "$file" ] && echo "Error Code 5: $file is unwritable. Todolist has deleted Save File" && rm "$file" && exit 5
+
+cat > $file <<EOF
+Hello World!
+I am at $file!
+EOF
