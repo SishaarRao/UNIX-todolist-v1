@@ -84,8 +84,10 @@ done
 file="./.saves/data1.json"
 # Check if file exists and is writable, if not create the file
 ( [ -e "$file" ] || touch "$file" ) && [ ! -w "$file" ] && echo "Error Code 5: $file is unwritable. Todolist has deleted Save File" && rm "$file" && exit 5
-
+# Write to File
+curr=`cat $file`
 cat > $file <<EOF
-Hello World!
+$curr
+Hello World Again!
 I am at $file!
 EOF
