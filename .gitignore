@@ -1,3 +1,6 @@
 # Ignore the gitbash file
 
 /gitbash.sh*
+
+# Ignore files in the .saves
+/.saves/*
