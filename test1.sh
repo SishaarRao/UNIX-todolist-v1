@@ -93,6 +93,8 @@ for i in $(seq 0 $(($len-1)));
 do
     index=`printf "%012d" "$i"` 
     var="__tick_data_List_${index}_Description"
+    var2="__tick_data_List_${index}_Completed"    
     eval result=\$$var
-    echo $result
+    eval result2=\$$var2
+    echo $result $result2
 done
