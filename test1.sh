@@ -88,12 +88,11 @@ DATA=`cat ./data2.json`
 echo $DATA
 tickParse "$DATA"
 len=``List.length()``
-
+echo $len
 for i in $(seq 0 $(($len-1)));
 do
-    echo $i
-    input="List[$i].Description"
-    echo $input
-    echo `` `eval $input` ``
+    index=`printf "%012d" "$i"` 
+    var="__tick_data_List_${index}_Description"
+    eval result=\$$var
+    echo $result
 done
-
