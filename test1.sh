@@ -79,10 +79,33 @@ done
 file="./.saves/data1.json"
 # Check if file exists and is writable, if not create the file
 ( [ -e "$file" ] || touch "$file" ) && [ ! -w "$file" ] && echo "Error Code 5: $file is unwritable. Todolist has deleted Save File" && rm "$file" && exit 5
-# Write to File
-curr=`cat $file`
+
+# Prepare to write to file
+toWrite=""
+for i in $(seq 0 $((``List.length()``-1))); do
+    # Retrieve contents of the List
+    index=`printf "%012d" "$i"` 
+    eval description=\$"__tick_data_List_${index}_Description"
+    eval completed=\$"__tick_data_List_${index}_Completed"
+
+    # Format List contents for JSON output
+    if [[ $description != "" ]] && [[ $completed != "" ]]; then
+	toWrite="$toWrite{"
+	toWrite="$toWrite\"Description\": \"$description\","
+	toWrite="$toWrite\"Completed\": \"$completed\""
+	toWrite="$toWrite},"
+    fi
+done
+
+# Cleanup the end of the contents by removing the ,\n
+len=${#toWrite}
+toWrite="${toWrite::$((len-1))}"
+
+#
 cat > $file <<EOF
-$curr
-Hello World Again!
-I am at $file!
+{
+    "List":[
+	$toWrite
+    ]
+}
 EOF
