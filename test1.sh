@@ -75,6 +75,7 @@ for i in $(seq 0 $((``List.length()``-1))); do
     echo $description $completed
 done
 
+
 # Write Data to a JSON file
 file="./.saves/data1.json"
 # Check if file exists and is writable, if not create the file
@@ -90,10 +91,14 @@ for i in $(seq 0 $((``List.length()``-1))); do
 
     # Format List contents for JSON output
     if [[ $description != "" ]] && [[ $completed != "" ]]; then
-	toWrite="$toWrite{"
-	toWrite="$toWrite\"Description\": \"$description\","
-	toWrite="$toWrite\"Completed\": \"$completed\""
-	toWrite="$toWrite},"
+	toWrite="$toWrite{
+	"
+	toWrite="$toWrite    \"Description\": \"$description\",
+	"
+	toWrite="$toWrite    \"Completed\": \"$completed\""
+	toWrite="$toWrite
+	},
+	"
     fi
 done
 
